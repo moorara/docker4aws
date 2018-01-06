@@ -1,0 +1,12 @@
+# Terraform files
+*.tfvars
+*.tfstate
+*.tfstate.*
+*.auto.tfvars
+*.tfstate.backup
+*.tfstate.*.backup
+.terraform/
+
+# Misc files
+*.pem
+*.pub
