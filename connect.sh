@@ -189,6 +189,7 @@ function run_action {
 
 function cleanup {
   close_docker_tunnel $node || true
+
   printf "Cleanup completed!\n"
 }
 

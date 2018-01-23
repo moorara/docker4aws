@@ -72,7 +72,7 @@
       ]
     }
   },
-  "Description": "Docker CE for AWS 17.10.0-ce (17.10.0-ce-aws1)",
+  "Description": "Docker CE for AWS 17.12.0-ce (17.12.0-ce-aws1)",
   "Mappings": {
     "AWSInstanceType2Arch": {
       "c3.2xlarge": {
@@ -290,11 +290,11 @@
       "eu-central-1": {
         "AZ0": "0",
         "AZ1": "1",
-        "AZ2": "0",
+        "AZ2": "2",
         "EFSSupport": "yes",
         "LambdaSupport": "no",
         "Name": "Frankfurt",
-        "NumAZs": "2"
+        "NumAZs": "3"
       },
       "eu-west-1": {
         "AZ0": "0",
@@ -371,59 +371,59 @@
     },
     "AWSRegionArch2AMI": {
       "ap-northeast-1": {
-        "HVM64": "ami-55b01533",
+        "HVM64": "ami-3d940d5b",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ap-northeast-2": {
-        "HVM64": "ami-4070d52e",
+        "HVM64": "ami-61bd1d0f",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ap-south-1": {
-        "HVM64": "ami-c42e6cab",
+        "HVM64": "ami-b3c793dc",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ap-southeast-1": {
-        "HVM64": "ami-1910577a",
+        "HVM64": "ami-4ef18132",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ap-southeast-2": {
-        "HVM64": "ami-12826e70",
+        "HVM64": "ami-99a75afb",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ca-central-1": {
-        "HVM64": "ami-d8a810bc",
+        "HVM64": "ami-2afc794e",
         "HVMG2": "NOT_SUPPORTED"
       },
       "eu-central-1": {
-        "HVM64": "ami-b20bb2dd",
+        "HVM64": "ami-70f7651f",
         "HVMG2": "NOT_SUPPORTED"
       },
       "eu-west-1": {
-        "HVM64": "ami-523be22b",
+        "HVM64": "ami-7abe2e03",
         "HVMG2": "NOT_SUPPORTED"
       },
       "eu-west-2": {
-        "HVM64": "ami-572c3133",
+        "HVM64": "ami-7b81991f",
         "HVMG2": "NOT_SUPPORTED"
       },
       "sa-east-1": {
-        "HVM64": "ami-1649307a",
+        "HVM64": "ami-a72466cb",
         "HVMG2": "NOT_SUPPORTED"
       },
       "us-east-1": {
-        "HVM64": "ami-7b4d9101",
+        "HVM64": "ami-6ebce314",
         "HVMG2": "NOT_SUPPORTED"
       },
       "us-east-2": {
-        "HVM64": "ami-fff4d89a",
+        "HVM64": "ami-2eac874b",
         "HVMG2": "NOT_SUPPORTED"
       },
       "us-west-1": {
-        "HVM64": "ami-96231ef6",
+        "HVM64": "ami-42f3f322",
         "HVMG2": "NOT_SUPPORTED"
       },
       "us-west-2": {
-        "HVM64": "ami-fa539182",
+        "HVM64": "ami-98bc08e0",
         "HVMG2": "NOT_SUPPORTED"
       }
     },
@@ -432,8 +432,8 @@
         "HasDDC": "no",
         "addOn": "base",
         "channel": "edge",
-        "docker": "17.10.0-ce",
-        "forAws": "17.10.0-ce-aws1"
+        "docker": "17.12.0-ce",
+        "forAws": "17.12.0-ce-aws1"
       }
     },
     "VpcCidrs": {
@@ -527,6 +527,9 @@
         },
         "EnableSystemPrune": {
           "default": "Enable daily resource cleanup?"
+        },
+        "EncryptEFS": {
+          "default": "Encrypt EFS objects?"
         },
         "InstanceType": {
           "default": "Agent worker instance type?"
@@ -689,6 +692,15 @@
       ],
       "Default": "no",
       "Description": "Cleans up unused images, containers, networks and volumes",
+      "Type": "String"
+    },
+    "EncryptEFS": {
+      "AllowedValues": [
+        "false",
+        "true"
+      ],
+      "Default": "false",
+      "Description": "Specifies whether any EFS objects created will be encrypted",
       "Type": "String"
     },
     "InstanceType": {
@@ -1120,6 +1132,9 @@
     "FileSystemGP": {
       "Condition": "InstallCloudStorEFSPreReqs",
       "Properties": {
+        "Encrypted": {
+          "Ref": "EncryptEFS"
+        },
         "FileSystemTags": [
           {
             "Key": "Name",
@@ -1143,6 +1158,9 @@
     "FileSystemMaxIO": {
       "Condition": "InstallCloudStorEFSPreReqs",
       "Properties": {
+        "Encrypted": {
+          "Ref": "EncryptEFS"
+        },
         "FileSystemTags": [
           {
             "Key": "Name",
@@ -1183,7 +1201,7 @@
         "HealthCheckGracePeriod": 300,
         "HealthCheckType": "ELB",
         "LaunchConfigurationName": {
-          "Ref": "ManagerLaunchConfig17100ceaws1"
+          "Ref": "ManagerLaunchConfig17120ceaws1"
         },
         "LoadBalancerNames": [
           {
@@ -1297,7 +1315,7 @@
         }
       }
     },
-    "ManagerLaunchConfig17100ceaws1": {
+    "ManagerLaunchConfig17120ceaws1": {
       "DependsOn": "ExternalLoadBalancer",
       "Properties": {
         "AssociatePublicIpAddress": {
@@ -1771,7 +1789,7 @@
         "HealthCheckGracePeriod": 300,
         "HealthCheckType": "ELB",
         "LaunchConfigurationName": {
-          "Ref": "NodeLaunchConfig17100ceaws1"
+          "Ref": "NodeLaunchConfig17120ceaws1"
         },
         "LoadBalancerNames": [
           {
@@ -1885,7 +1903,7 @@
         }
       }
     },
-    "NodeLaunchConfig17100ceaws1": {
+    "NodeLaunchConfig17120ceaws1": {
       "DependsOn": "ManagerAsg",
       "Properties": {
         "AssociatePublicIpAddress": {
