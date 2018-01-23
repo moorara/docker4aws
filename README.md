@@ -1,3 +1,5 @@
+[![Build Status][travisci-image]][travisci-url]
+
 # docker4aws
 This is a [Terraform](https://www.terraform.io) project for deploying
 [Docker CE for AWS](https://docs.docker.com/docker-for-aws) to an AWS account.
@@ -27,7 +29,7 @@ Then, run the following initialization tasks.
 | make keys   | Generates new ssh keys                            |
 | make update | Updates Docker CE for AWS CloudFormation template |
 
-### Deploying
+### Deploying Swarm
 
 | Command       | Description                                      |
 |---------------|--------------------------------------------------|
@@ -36,7 +38,7 @@ Then, run the following initialization tasks.
 | make apply    | Deploys/Updates Terraform-managed infrastructure |
 | make destroy  | Destroys Terraform-managed infrastructure        |
 
-### Connecting
+### Accessing Swarm
 
 | Command              | Description                       |
 |----------------------|-----------------------------------|
@@ -44,3 +46,7 @@ Then, run the following initialization tasks.
 | make manager-tunnel  | Tunnel to a manager docker socket |
 | make worker-ssh      | ssh to a worker node              |
 | make worker-tunnel   | Tunnel to a worker docker socket  |
+
+
+[travisci-url]: https://travis-ci.org/moorara/docker4aws
+[travisci-image]: https://travis-ci.org/moorara/docker4aws.svg?branch=master
