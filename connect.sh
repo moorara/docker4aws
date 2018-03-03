@@ -167,7 +167,7 @@ function close_docker_tunnel {
   node=$1
 
   ssh \
-    -F ~/.ssh/d4aws-dev-config \
+    -F $ssh_config_file \
     -O exit $node \
     > /dev/null 2>&1 || true
 
