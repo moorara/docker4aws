@@ -72,7 +72,7 @@
       ]
     }
   },
-  "Description": "Docker CE for AWS 17.12.0-ce (17.12.0-ce-aws1)",
+  "Description": "Docker CE for AWS 18.03.0-ce (18.03.0-ce-aws1)",
   "Mappings": {
     "AWSInstanceType2Arch": {
       "c3.2xlarge": {
@@ -371,59 +371,59 @@
     },
     "AWSRegionArch2AMI": {
       "ap-northeast-1": {
-        "HVM64": "ami-3d940d5b",
+        "HVM64": "ami-0fcd9e69",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ap-northeast-2": {
-        "HVM64": "ami-61bd1d0f",
+        "HVM64": "ami-9c17bbf2",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ap-south-1": {
-        "HVM64": "ami-b3c793dc",
+        "HVM64": "ami-806a31ef",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ap-southeast-1": {
-        "HVM64": "ami-4ef18132",
+        "HVM64": "ami-22e9b55e",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ap-southeast-2": {
-        "HVM64": "ami-99a75afb",
+        "HVM64": "ami-06428f64",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ca-central-1": {
-        "HVM64": "ami-2afc794e",
+        "HVM64": "ami-07f37563",
         "HVMG2": "NOT_SUPPORTED"
       },
       "eu-central-1": {
-        "HVM64": "ami-70f7651f",
+        "HVM64": "ami-a47e2d4f",
         "HVMG2": "NOT_SUPPORTED"
       },
       "eu-west-1": {
-        "HVM64": "ami-7abe2e03",
+        "HVM64": "ami-355a0c4c",
         "HVMG2": "NOT_SUPPORTED"
       },
       "eu-west-2": {
-        "HVM64": "ami-7b81991f",
+        "HVM64": "ami-591afc3e",
         "HVMG2": "NOT_SUPPORTED"
       },
       "sa-east-1": {
-        "HVM64": "ami-a72466cb",
+        "HVM64": "ami-5ab7e336",
         "HVMG2": "NOT_SUPPORTED"
       },
       "us-east-1": {
-        "HVM64": "ami-6ebce314",
+        "HVM64": "ami-3129f94c",
         "HVMG2": "NOT_SUPPORTED"
       },
       "us-east-2": {
-        "HVM64": "ami-2eac874b",
+        "HVM64": "ami-45241520",
         "HVMG2": "NOT_SUPPORTED"
       },
       "us-west-1": {
-        "HVM64": "ami-42f3f322",
+        "HVM64": "ami-12776172",
         "HVMG2": "NOT_SUPPORTED"
       },
       "us-west-2": {
-        "HVM64": "ami-98bc08e0",
+        "HVM64": "ami-ccf668b4",
         "HVMG2": "NOT_SUPPORTED"
       }
     },
@@ -432,8 +432,8 @@
         "HasDDC": "no",
         "addOn": "base",
         "channel": "edge",
-        "docker": "17.12.0-ce",
-        "forAws": "17.12.0-ce-aws1"
+        "docker": "18.03.0-ce",
+        "forAws": "18.03.0-ce-aws1"
       }
     },
     "VpcCidrs": {
@@ -1041,6 +1041,43 @@
       },
       "Type": "AWS::IAM::Policy"
     },
+    "ECRPolicy": {
+      "DependsOn": [
+        "ProxyRole",
+        "WorkerRole"
+      ],
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "ecr:GetAuthorizationToken",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:GetRepositoryPolicy",
+                "ecr:DescribeRepositories",
+                "ecr:ListImages",
+                "ecr:DescribeImages",
+                "ecr:BatchGetImage"
+              ],
+              "Effect": "Allow",
+              "Resource": "*"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "ecr-policy",
+        "Roles": [
+          {
+            "Ref": "ProxyRole"
+          },
+          {
+            "Ref": "WorkerRole"
+          }
+        ]
+      },
+      "Type": "AWS::IAM::Policy"
+    },
     "ExternalLoadBalancer": {
       "DependsOn": [
         "ExternalLoadBalancerSG"
@@ -1201,7 +1238,7 @@
         "HealthCheckGracePeriod": 300,
         "HealthCheckType": "ELB",
         "LaunchConfigurationName": {
-          "Ref": "ManagerLaunchConfig17120ceaws1"
+          "Ref": "ManagerLaunchConfig18030ceaws1"
         },
         "LoadBalancerNames": [
           {
@@ -1315,7 +1352,7 @@
         }
       }
     },
-    "ManagerLaunchConfig17120ceaws1": {
+    "ManagerLaunchConfig18030ceaws1": {
       "DependsOn": "ExternalLoadBalancer",
       "Properties": {
         "AssociatePublicIpAddress": {
@@ -1789,7 +1826,7 @@
         "HealthCheckGracePeriod": 300,
         "HealthCheckType": "ELB",
         "LaunchConfigurationName": {
-          "Ref": "NodeLaunchConfig17120ceaws1"
+          "Ref": "NodeLaunchConfig18030ceaws1"
         },
         "LoadBalancerNames": [
           {
@@ -1903,7 +1940,7 @@
         }
       }
     },
-    "NodeLaunchConfig17120ceaws1": {
+    "NodeLaunchConfig18030ceaws1": {
       "DependsOn": "ManagerAsg",
       "Properties": {
         "AssociatePublicIpAddress": {

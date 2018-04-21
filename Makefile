@@ -16,8 +16,8 @@ update:
 keys:
 	@ ssh-keygen -f terraform/d4aws-$(environment) -t rsa -N '' 1> /dev/null && \
 	  chmod 400 terraform/d4aws-$(environment) && \
-	  mv terraform/d4aws-$(environment) terraform/d4aws-$(environment).pem && \
-	  cp terraform/d4aws-$(environment).pem ~/.ssh/d4aws-$(environment)
+	  cp terraform/d4aws-$(environment) ~/.ssh/d4aws-$(environment) && \
+	  mv terraform/d4aws-$(environment) terraform/d4aws-$(environment).pem
 
 init:
 	@ cd terraform && \
