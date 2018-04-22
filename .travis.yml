@@ -1,6 +1,9 @@
 dist: trusty
 sudo: required
 
+env:
+  - TERRAFORM_VERSION=0.11.7
+
 install:
   - curl -Os https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
   - curl -Os https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_SHA256SUMS
