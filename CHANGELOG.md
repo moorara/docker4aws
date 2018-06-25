@@ -1,5 +1,13 @@
 # Change Log
 
+## [v0.1.3](https://github.com/moorara/docker4aws/tree/v0.1.3) (2018-06-24)
+[Full Changelog](https://github.com/moorara/docker4aws/compare/v0.1.2...v0.1.3)
+
+**Merged pull requests:**
+
+- Update Docker version to 18.04 [\#6](https://github.com/moorara/docker4aws/pull/6) ([moorara](https://github.com/moorara))
+- Refactor CI build [\#5](https://github.com/moorara/docker4aws/pull/5) ([moorara](https://github.com/moorara))
+
 ## [v0.1.2](https://github.com/moorara/docker4aws/tree/v0.1.2) (2018-04-21)
 [Full Changelog](https://github.com/moorara/docker4aws/compare/v0.1.1...v0.1.2)
 
