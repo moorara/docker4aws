@@ -25,6 +25,14 @@
         "yes"
       ]
     },
+    "EFSEncrypted": {
+      "Fn::Equals": [
+        {
+          "Ref": "EncryptEFS"
+        },
+        "true"
+      ]
+    },
     "EFSSupported": {
       "Fn::Equals": [
         {
@@ -72,7 +80,7 @@
       ]
     }
   },
-  "Description": "Docker CE for AWS 18.03.0-ce (18.03.0-ce-aws1)",
+  "Description": "Docker CE for AWS 18.04.0-ce (18.04.0-ce-aws1)",
   "Mappings": {
     "AWSInstanceType2Arch": {
       "c3.2xlarge": {
@@ -103,6 +111,24 @@
         "Arch": "HVM64"
       },
       "c4.xlarge": {
+        "Arch": "HVM64"
+      },
+      "c5.18xlarge": {
+        "Arch": "HVM64"
+      },
+      "c5.2xlarge": {
+        "Arch": "HVM64"
+      },
+      "c5.4xlarge": {
+        "Arch": "HVM64"
+      },
+      "c5.9xlarge": {
+        "Arch": "HVM64"
+      },
+      "c5.large": {
+        "Arch": "HVM64"
+      },
+      "c5.xlarge": {
         "Arch": "HVM64"
       },
       "cc2.8xlarge": {
@@ -178,6 +204,24 @@
         "Arch": "HVM64"
       },
       "m4.xlarge": {
+        "Arch": "HVM64"
+      },
+      "m5.12xlarge": {
+        "Arch": "HVM64"
+      },
+      "m5.24xlarge": {
+        "Arch": "HVM64"
+      },
+      "m5.2xlarge": {
+        "Arch": "HVM64"
+      },
+      "m5.4xlarge": {
+        "Arch": "HVM64"
+      },
+      "m5.large": {
+        "Arch": "HVM64"
+      },
+      "m5.xlarge": {
         "Arch": "HVM64"
       },
       "r3.2xlarge": {
@@ -371,59 +415,59 @@
     },
     "AWSRegionArch2AMI": {
       "ap-northeast-1": {
-        "HVM64": "ami-0fcd9e69",
+        "HVM64": "ami-50a1412f",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ap-northeast-2": {
-        "HVM64": "ami-9c17bbf2",
+        "HVM64": "ami-35dd745b",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ap-south-1": {
-        "HVM64": "ami-806a31ef",
+        "HVM64": "ami-bdffded2",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ap-southeast-1": {
-        "HVM64": "ami-22e9b55e",
+        "HVM64": "ami-7dfdd301",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ap-southeast-2": {
-        "HVM64": "ami-06428f64",
+        "HVM64": "ami-d9cc19bb",
         "HVMG2": "NOT_SUPPORTED"
       },
       "ca-central-1": {
-        "HVM64": "ami-07f37563",
+        "HVM64": "ami-6924a50d",
         "HVMG2": "NOT_SUPPORTED"
       },
       "eu-central-1": {
-        "HVM64": "ami-a47e2d4f",
+        "HVM64": "ami-c4b6902f",
         "HVMG2": "NOT_SUPPORTED"
       },
       "eu-west-1": {
-        "HVM64": "ami-355a0c4c",
+        "HVM64": "ami-3bfcd342",
         "HVMG2": "NOT_SUPPORTED"
       },
       "eu-west-2": {
-        "HVM64": "ami-591afc3e",
+        "HVM64": "ami-7a40a31d",
         "HVMG2": "NOT_SUPPORTED"
       },
       "sa-east-1": {
-        "HVM64": "ami-5ab7e336",
+        "HVM64": "ami-25f9aa49",
         "HVMG2": "NOT_SUPPORTED"
       },
       "us-east-1": {
-        "HVM64": "ami-3129f94c",
+        "HVM64": "ami-6850e317",
         "HVMG2": "NOT_SUPPORTED"
       },
       "us-east-2": {
-        "HVM64": "ami-45241520",
+        "HVM64": "ami-2d1a2848",
         "HVMG2": "NOT_SUPPORTED"
       },
       "us-west-1": {
-        "HVM64": "ami-12776172",
+        "HVM64": "ami-e6190586",
         "HVMG2": "NOT_SUPPORTED"
       },
       "us-west-2": {
-        "HVM64": "ami-ccf668b4",
+        "HVM64": "ami-5bf19a23",
         "HVMG2": "NOT_SUPPORTED"
       }
     },
@@ -432,8 +476,8 @@
         "HasDDC": "no",
         "addOn": "base",
         "channel": "edge",
-        "docker": "18.03.0-ce",
-        "forAws": "18.03.0-ce-aws1"
+        "docker": "18.04.0-ce",
+        "forAws": "18.04.0-ce-aws1"
       }
     },
     "VpcCidrs": {
@@ -711,6 +755,12 @@
         "t2.large",
         "t2.xlarge",
         "t2.2xlarge",
+        "m5.large",
+        "m5.xlarge",
+        "m5.2xlarge",
+        "m5.4xlarge",
+        "m5.12xlarge",
+        "m5.24xlarge",
         "m4.large",
         "m4.xlarge",
         "m4.2xlarge",
@@ -726,6 +776,12 @@
         "c4.2xlarge",
         "c4.4xlarge",
         "c4.8xlarge",
+        "c5.large",
+        "c5.xlarge",
+        "c5.2xlarge",
+        "c5.4xlarge",
+        "c5.9xlarge",
+        "c5.18xlarge",
         "c3.large",
         "c3.xlarge",
         "c3.2xlarge",
@@ -783,6 +839,12 @@
         "t2.large",
         "t2.xlarge",
         "t2.2xlarge",
+        "m5.large",
+        "m5.xlarge",
+        "m5.2xlarge",
+        "m5.4xlarge",
+        "m5.12xlarge",
+        "m5.24xlarge",
         "m4.large",
         "m4.xlarge",
         "m4.2xlarge",
@@ -798,6 +860,12 @@
         "c4.2xlarge",
         "c4.4xlarge",
         "c4.8xlarge",
+        "c5.large",
+        "c5.xlarge",
+        "c5.2xlarge",
+        "c5.4xlarge",
+        "c5.9xlarge",
+        "c5.18xlarge",
         "c3.large",
         "c3.xlarge",
         "c3.2xlarge",
@@ -1170,7 +1238,15 @@
       "Condition": "InstallCloudStorEFSPreReqs",
       "Properties": {
         "Encrypted": {
-          "Ref": "EncryptEFS"
+          "Fn::If": [
+            "EFSEncrypted",
+            {
+              "Ref": "EncryptEFS"
+            },
+            {
+              "Ref": "AWS::NoValue"
+            }
+          ]
         },
         "FileSystemTags": [
           {
@@ -1196,7 +1272,15 @@
       "Condition": "InstallCloudStorEFSPreReqs",
       "Properties": {
         "Encrypted": {
-          "Ref": "EncryptEFS"
+          "Fn::If": [
+            "EFSEncrypted",
+            {
+              "Ref": "EncryptEFS"
+            },
+            {
+              "Ref": "AWS::NoValue"
+            }
+          ]
         },
         "FileSystemTags": [
           {
@@ -1238,7 +1322,7 @@
         "HealthCheckGracePeriod": 300,
         "HealthCheckType": "ELB",
         "LaunchConfigurationName": {
-          "Ref": "ManagerLaunchConfig18030ceaws1"
+          "Ref": "ManagerLaunchConfig18040ceaws1"
         },
         "LoadBalancerNames": [
           {
@@ -1352,7 +1436,7 @@
         }
       }
     },
-    "ManagerLaunchConfig18030ceaws1": {
+    "ManagerLaunchConfig18040ceaws1": {
       "DependsOn": "ExternalLoadBalancer",
       "Properties": {
         "AssociatePublicIpAddress": {
@@ -1826,7 +1910,7 @@
         "HealthCheckGracePeriod": 300,
         "HealthCheckType": "ELB",
         "LaunchConfigurationName": {
-          "Ref": "NodeLaunchConfig18030ceaws1"
+          "Ref": "NodeLaunchConfig18040ceaws1"
         },
         "LoadBalancerNames": [
           {
@@ -1940,7 +2024,7 @@
         }
       }
     },
-    "NodeLaunchConfig18030ceaws1": {
+    "NodeLaunchConfig18040ceaws1": {
       "DependsOn": "ManagerAsg",
       "Properties": {
         "AssociatePublicIpAddress": {
