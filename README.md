@@ -22,30 +22,30 @@ size       =  "..."      # small, medium, or large  (default: small)
 whitelist  =  [ "..." ]  # A list of CIDRs to be whitelisted (default: ["0.0.0.0/0"])
 ```
 
-Then, run the following initialization tasks.
+## Tasks
 
-| Command     | Description                                       |
-|-------------|---------------------------------------------------|
-| make keys   | Generates new ssh keys                            |
-| make update | Updates Docker CE for AWS CloudFormation template |
+| Command       | Description                                       |
+|---------------|---------------------------------------------------|
+| `make update` | Updates Docker CE for AWS CloudFormation template |
 
-### Deploying Swarm
+## Deploying Swarm
 
-| Command       | Description                                      |
-|---------------|--------------------------------------------------|
-| make init     | Initializes Terraform project                    |
-| make plan     | Dry run of Terraform-managed infrastructure      |
-| make apply    | Deploys/Updates Terraform-managed infrastructure |
-| make destroy  | Destroys Terraform-managed infrastructure        |
+| Command         | Description                                      |
+|-----------------|--------------------------------------------------|
+| `make keys`     | Generates new ssh keys                           |
+| `make init`     | Initializes Terraform project                    |
+| `make plan`     | Dry run of Terraform-managed infrastructure      |
+| `make apply`    | Deploys/Updates Terraform-managed infrastructure |
+| `make destroy`  | Destroys Terraform-managed infrastructure        |
 
-### Accessing Swarm
+## Accessing Swarm
 
-| Command              | Description                       |
-|----------------------|-----------------------------------|
-| make manager-ssh     | ssh to a manager node             |
-| make manager-tunnel  | Tunnel to a manager docker socket |
-| make worker-ssh      | ssh to a worker node              |
-| make worker-tunnel   | Tunnel to a worker docker socket  |
+| Command                | Description                       |
+|------------------------|-----------------------------------|
+| `make manager-ssh`     | ssh to a manager node             |
+| `make manager-tunnel`  | Tunnel to a manager docker socket |
+| `make worker-ssh`      | ssh to a worker node              |
+| `make worker-tunnel`   | Tunnel to a worker docker socket  |
 
 
 [travisci-url]: https://travis-ci.org/moorara/docker4aws
