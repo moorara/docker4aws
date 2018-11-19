@@ -10,8 +10,7 @@ clean:
 	  rm -rf terraform/.terraform terraform/terraform.tfstate terraform/terraform.tfstate.backup
 
 update:
-	@ ./update.sh \
-	  --channel $(channel)
+	@ ./update.sh --channel $(channel)
 
 keys:
 	@ ssh-keygen -f terraform/d4aws-$(environment) -t rsa -N '' 1> /dev/null && \
