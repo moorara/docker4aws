@@ -1,11 +1,11 @@
 resource "aws_vpc" "d4aws" {
-  cidr_block = "${lookup(var.vpc_cidrs, var.region)}"
+  cidr_block = lookup(var.vpc_cidrs, var.region)
   enable_dns_support = true
   enable_dns_hostnames = true
-  tags {
+  tags = {
     Name = "d4aws"
-    Environment = "${var.environment}"
-    Region = "${var.region}"
+    Environment = var.environment
+    Region = var.region
   }
 }
 
@@ -15,19 +15,19 @@ resource "aws_subnet" "d4aws" {
   cidr_block = "${cidrsubnet(aws_vpc.d4aws.cidr_block, 8, count.index)}"
   availability_zone = "${data.aws_availability_zones.d4aws.names[count.index]}"
   map_public_ip_on_launch = false
-  tags {
+  tags = {
     Name = "d4aws-${count.index}"
-    Environment = "${var.environment}"
-    Region = "${var.region}"
+    Environment = var.environment
+    Region = var.region
   }
 }
 
 resource "aws_internet_gateway" "d4aws" {
   vpc_id = "${aws_vpc.d4aws.id}"
-  tags {
+  tags = {
     Name = "d4aws"
-    Environment = "${var.environment}"
-    Region = "${var.region}"
+    Environment = var.environment
+    Region = var.region
   }
 }
 
@@ -37,10 +37,10 @@ resource "aws_route_table" "d4aws" {
     cidr_block = "0.0.0.0/0"
     gateway_id = "${aws_internet_gateway.d4aws.id}"
   }
-  tags {
+  tags = {
     Name = "d4aws"
-    Environment = "${var.environment}"
-    Region = "${var.region}"
+    Environment = var.environment
+    Region = var.region
   }
 }
 

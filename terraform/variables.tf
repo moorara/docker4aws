@@ -1,25 +1,25 @@
 variable "access_key" {
-  type = "string"
+  type = string
 }
 
 variable "secret_key" {
-  type = "string"
+  type = string
 }
 
 variable "region" {
-  type = "string"
+  type = string
 }
 
 variable "environment" {
-  type = "string"
+  type = string
 }
 
 variable "size" {
-  type = "string"
+  type = string
   default = "small"
 }
 
 variable "whitelist" {
-  type = "list"
+  type = list(string)
   default = [ "0.0.0.0/0" ]
 }
