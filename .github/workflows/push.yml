@@ -18,7 +18,7 @@ jobs:
           echo "secret_key = \"$AWS_SECRET_KEY\"" >> terraform/terraform.tfvars
           echo "region = \"$AWS_REGION\"" >> terraform/terraform.tfvars
           echo "environment = \"$AWS_ENVIRONMENT\"" >> terraform/terraform.tfvars
-      - name: Plan
+      - name: Terraform Plan
         uses: moorara/actions/terraform@master
         with:
           entrypoint: make

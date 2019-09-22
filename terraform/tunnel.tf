@@ -36,12 +36,12 @@ resource "aws_security_group" "tunnel" {
     from_port = 22
     to_port = 22
     protocol = "tcp"
-    cidr_blocks =  [ "${var.whitelist}" ]
+    cidr_blocks = var.whitelist
   }
-  tags {
+  tags = {
     Name = "d4aws"
-    Environment = "${var.environment}"
-    Region = "${var.region}"
+    Environment = var.environment
+    Region = var.region
   }
 
   lifecycle {
@@ -64,11 +64,11 @@ resource "aws_launch_configuration" "tunnel" {
 
 resource "aws_autoscaling_group" "tunnel" {
   name = "d4aws-tunnel-${var.environment}"
-  vpc_zone_identifier = [ "${aws_subnet.d4aws.*.id}" ]
+  vpc_zone_identifier = "${aws_subnet.d4aws.*.id}"
   launch_configuration = "${aws_launch_configuration.tunnel.name}"
-  min_size = "${lookup(var.config, "${var.size}.tunnel.count")}"
-  desired_capacity = "${lookup(var.config, "${var.size}.tunnel.count")}"
-  max_size = "${lookup(var.config, "${var.size}.tunnel.count")}"
+  min_size = lookup(var.profiles[var.size], "tunnel_count")
+  desired_capacity = lookup(var.profiles[var.size], "tunnel_count")
+  max_size = lookup(var.profiles[var.size], "tunnel_count")
   tag {
     key = "Name"
     value = "d4aws-tunnel"
@@ -76,12 +76,12 @@ resource "aws_autoscaling_group" "tunnel" {
   }
   tag {
     key = "Environment"
-    value = "${var.environment}"
+    value = var.environment
     propagate_at_launch = true
   }
   tag {
     key = "Region"
-    value = "${var.region}"
+    value = var.region
     propagate_at_launch = true
   }
 
