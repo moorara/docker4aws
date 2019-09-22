@@ -1,6 +1,16 @@
 # Change Log
 
-## [v0.1.3](https://github.com/moorara/docker4aws/tree/v0.1.3) (2018-06-24)
+## [v0.1.4](https://github.com/moorara/docker4aws/tree/v0.1.4) (2019-09-22)
+[Full Changelog](https://github.com/moorara/docker4aws/compare/v0.1.3...v0.1.4)
+
+**Merged pull requests:**
+
+- Fix README badge [\#10](https://github.com/moorara/docker4aws/pull/10) ([moorara](https://github.com/moorara))
+- Update Terraform code to new 0.12 [\#9](https://github.com/moorara/docker4aws/pull/9) ([moorara](https://github.com/moorara))
+- Enable GitHub Actions [\#8](https://github.com/moorara/docker4aws/pull/8) ([moorara](https://github.com/moorara))
+- Refactor Makefile [\#7](https://github.com/moorara/docker4aws/pull/7) ([moorara](https://github.com/moorara))
+
+## [v0.1.3](https://github.com/moorara/docker4aws/tree/v0.1.3) (2018-06-25)
 [Full Changelog](https://github.com/moorara/docker4aws/compare/v0.1.2...v0.1.3)
 
 **Merged pull requests:**
