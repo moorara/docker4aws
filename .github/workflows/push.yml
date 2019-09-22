@@ -1,0 +1,25 @@
+name: Main
+on: push
+jobs:
+  terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Configure Terraform
+        shell: bash
+        env:
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+          AWS_REGION: us-east-1
+          AWS_ENVIRONMENT: ci
+        run: |
+          echo "access_key = \"$AWS_ACCESS_KEY\"" > terraform/terraform.tfvars
+          echo "secret_key = \"$AWS_SECRET_KEY\"" >> terraform/terraform.tfvars
+          echo "region = \"$AWS_REGION\"" >> terraform/terraform.tfvars
+          echo "environment = \"$AWS_ENVIRONMENT\"" >> terraform/terraform.tfvars
+      - name: Plan
+        uses: moorara/actions/terraform@master
+        with:
+          entrypoint: make
+          args: keys init plan
