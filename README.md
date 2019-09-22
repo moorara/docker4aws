@@ -54,5 +54,5 @@ whitelist = [ "..." ]  # A list of CIDRs to be whitelisted (default: ["0.0.0.0/0
 | `make worker-tunnel`   | Tunnel to a worker docker socket  |
 
 
-[workflow-url]: https://github.com/moorara/packer/actions
-[workflow-image]: https://github.com/moorara/packer/workflows/Main/badge.svg
+[workflow-url]: https://github.com/moorara/docker4aws/actions
+[workflow-image]: https://github.com/moorara/docker4aws/workflows/Main/badge.svg
