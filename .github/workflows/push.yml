@@ -19,7 +19,7 @@ jobs:
           echo "region = \"$AWS_REGION\"" >> terraform/terraform.tfvars
           echo "environment = \"$AWS_ENVIRONMENT\"" >> terraform/terraform.tfvars
       - name: Terraform Plan
-        uses: moorara/actions/terraform@master
-        with:
-          entrypoint: make
-          args: keys init plan
+        shell: bash
+        run: |
+          # terraform is available in the GitHub Actions virtual environment
+          make keys init plan
