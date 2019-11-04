@@ -23,6 +23,10 @@ init:
 	@ cd terraform && \
 	  terraform init
 
+validate:
+	@ cd terraform && \
+	  terraform validate
+
 plan:
 	@ cd terraform && \
 	  terraform plan
@@ -74,5 +78,5 @@ worker-tunnel:
 
 .PHONY: clean
 .PHONY: update keys
-.PHONY: init plan apply destroy
+.PHONY: init validate plan apply destroy
 .PHONY: manager-ssh manager-tunnel worker-ssh worker-tunnel
